@@ -1,21 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:thh="www.thymeleaf.org">
+<html lang="'en" xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
+<link href="../css/style.css" type="text/css" rel="stylesheet" />
+
 <title>Welcome to Our Library!</title>
 </head>
 <body>
-	<h1>Welcome to the Library Database</h1>
-	<table>
-		<tr>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Review</th>
+	<div th:if="${message}" class="redText"> 
+		<h3 th:text="${message}"></h3>
+	</div>
 
-		</tr>
-	</table>
+	<div sec:authorize="!isFullyAuthenticated()"> 
+		<p> User: <span class="userName">Guest</span></p>
+		<a href="#" th:href="@{/login}"><button>Login Here</button></a>
+	</div>
 	
-	Login <a href="#" th:href="">here</a>
-	<button>Login</button>
+
+	
+	<div sec:authorize="isFullyAuthenticated()"> 
+		<p> User: <span class="userName" sec:authentication="name"></span></p>
+		<p> Role: <span sec:authentication="principal.authorities"></span></p>
+		<form action="#" th:action="@{/logout}" method="POST">
+			<input type="submit" value="Logout">
+		</form>
+	</div>
+		
+		
+	
+	<hr /> 
+	
+	<h1>Welcome to the Library Database</h1>
+
+
+	
+	
+	<div th:if="${libBookList.empty}">
+		<h2>There are no Books available</h2>
+	</div>
+
+	<div th:unless="${libBookList.empty}">
+		<table>
+			<tr>
+				<th>Title</th><th>Author</th><th>Review</th>
+			</tr>
+
+			<tr th:each="book : ${libBookList}">
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+				<td>
+					<a href="#" th:href="@{/viewBook/} + ${book.id}">
+						<button>review</button>
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+		<a href="#" th:href="@{/addPage}"><button>Add A Book</button></a>
+	</div>	
 </body>
 </html>

@@ -1,14 +1,17 @@
+
 create table books (
   id       LONG NOT NULL Primary Key AUTO_INCREMENT,
   title    VARCHAR(128) NOT NULL,
   author   VARCHAR(128) NOT NULL 
 );
 
+
 create table reviews (
   id       LONG NOT NULL Primary Key AUTO_INCREMENT,
   bookId   LONG NOT NULL,	
   text     VARCHAR(1024) NOT NULL UNIQUE
 );
+
 
 
 alter table reviews

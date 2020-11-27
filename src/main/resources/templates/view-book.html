@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="'en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<link href="../css/style.css" type="text/css" rel="stylesheet" />
+
+<title>Welcome to Our Library!</title>
+</head>
+<body>
+
+	<div sec:authorize="!isFullyAuthenticated()"> 
+		<p> User: <span class="userName">Guest</span><p>
+		<a href="#" th:href="@{/login}"><button>Login Here</button></a>
+	</div>
+	
+	<div sec:authorize="isFullyAuthenticated()">
+		<p>User: <span class="userName" sec:authentication="name"></span><p>
+		<p>Role: <span sec:authentication="principal.authorities"></span></p>
+		
+		<form action="#" th:action="@{/logout}" method="POST">
+			<input type="submit" value="Logout">
+		</form>
+	</div>
+
+	<hr />
+	
+	<h1>
+		Reviews for <span class="bookTitle" th:text="${book.title}"></span>
+	</h1>
+
+	<h3 th:text="|by ${book.author}|"></h3>
+
+	<hr /> 
+
+	<div th:if="${bookReviewList !=null}">
+		<ul th:each="review : ${bookReviewList}">
+			<li th:text="${review.text}"></li>
+		</ul>
+		
+	</div>
+
+	<div th:unless="${bookReviewList!=null}">
+		<h3>No reviews yet. Be the first to review it!</h3>
+	</div>
+
+
+
+	<div sec:authorize="!isFullyAuthenticated()" class="redText">
+		<p>
+			Login is required to give a review.
+		</p>
+	</div>
+
+
+	<a href="#" th:href="@{/addReview/} + ${book.id}">
+		<button>Add a review</button>
+	</a>
+	
+	<br />
+	<br />
+	<hr />
+	<a href="#" th:href="@{/}"><button>Back to index</button></a>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="'en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<link href="../css/style.css" type="text/css" rel="stylesheet" />
+<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+
+<title>Add Review</title>
+</head>
+<body>
+	<div sec:authorize="isFullyAuthenticated()"> 
+		<p>User: <span class="userName" sec:authentication="name"></span><p>
+		<p> Role: <span sec:authentication="principal.authorities"></span></p>
+		<form action="#" th:action="@{/logout}" method="POST">
+			<input type="submit" value="Logout">
+		</form>
+	</div>
+	
+	<hr /> 
+
+	<h1>Add your review!</h1>
+
+	<form action="#" th:action="@{/submitReview/} + ${book.id}" method="POST" 
+		name="form" onsubmit="return verify()">
+		<textarea name="review" rows="5" cols="50" required></textarea><br /> 
+		<input type="submit" value="Add Review!">
+	</form>
+	
+	<br />
+	<br />
+	<hr />
+	<a href="#" th:href="@{/}"><button>Back to index</button></a>
+</body>
+</html>
