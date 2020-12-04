@@ -1,18 +1,126 @@
+html {
+	padding: 0;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	top: 0px;
+	background-color: #E6E49F;
+}
+
+header {
+	text-align: center;
+	background-color: #25291C;
+	margin: 0;
+	padding: 15px;
+}
+
+header p {
+	color: white;
+}
+
+.logo {
+	color: white;
+	height: 120px;
+}
+
+h1 {
+	text-align: center;
+}
+
+table {
+	margin: auto;
+	width: 80%;
+}
+
 table, td, th, tr {
 	border: 1px solid black;
 	border-collapse: collapse;
 	padding: 6px;
 }
 
+tr {
+	background-color: #E3E7D3;
+}
+
+.hrHeader {
+	height: 20px;
+	background-color: #BDC2BF;
+	margin: 0px;
+	border: 0px;
+}
+
+th {
+	background-color: #989C94;
+	color: white;
+}
+
+.tbAuthor, .tbReview {
+	text-align: center;
+}
+
 .userName {
-	color: blue;
+	color: #E6E49F;
 	text-transform: capitalize;
 }
 
-.bookTitle {
-	color: orange;
+.btnLogin {
+	background-color: #BDC2BF;
+	padding: 5px 20px 5px 20px;
 }
 
-.redText{
-	color:red;
+.btnLogin:hover {
+	background-color: #E6E49F;
+}
+
+.btn {
+	background-color: #BDC2BF;
+	padding: 10px 20px 10px 20px;
+	border: none;
+}
+
+.btn:hover {
+	background-color: #989C94;
+}
+
+.centered, form, #error {
+	text-align: center;
+}
+
+.bookTitle {
+	text-align: center;
+	color: #25291C;
+}
+
+.redText {
+	color: red;
+}
+
+.shortMargin {
+	margin-top: 4px;
+}
+
+.revList {
+	padding: 10px 20% 10px 20%;
+}
+
+.division {
+	width: 70%;
+}
+
+.btnLoginWidth {
+	width: 220px;
+}
+
+.titleAuthor {
+	margin-top: -15px;
+}
+
+.spaceRight {
+	margin-right: 15px;
+}
+
+a{
+	text-decoration: none;
 }

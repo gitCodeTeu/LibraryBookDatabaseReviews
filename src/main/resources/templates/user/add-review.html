@@ -9,16 +9,42 @@
 <title>Add Review</title>
 </head>
 <body>
-	<div sec:authorize="isFullyAuthenticated()"> 
-		<p>User: <span class="userName" sec:authentication="name"></span><p>
-		<p> Role: <span sec:authentication="principal.authorities"></span></p>
-		<form action="#" th:action="@{/logout}" method="POST">
-			<input type="submit" value="Logout">
-		</form>
+	<header>
+		<a href="#" th:href="@{/}">
+			<img class="logo" src="../images/logo1.png" />
+		</a>
+		
+		<div sec:authorize="!isFullyAuthenticated()"> 
+			<p> User: <span class="userName">Guest</span></p>
+			<a href="#" th:href="@{/login}">
+				<button class="btnLogin">Login</button>
+			</a>
+		</div>
+		
+		<div sec:authorize="isFullyAuthenticated()"> 
+			<p> 
+				User: 
+				<span class="userName" sec:authentication="name"></span>
+			</p>
+			<p> 
+				Role: 
+				<span sec:authentication="principal.authorities"></span>
+			</p>
+			<form  action="#" th:action="@{/logout}" method="POST">
+				<input class="btnLogin" type="submit" value="Logout">
+			</form>
+		</div>
+	</header>
+	
+	<hr class="hrHeader"/> 	
+	
+	<div class="bookTitle">
+		<h1 class="bookTitle" th:text="${book.title}"> Book Title</h1>
+	 	<h3 class="titleAuthor" th:text="|by ${book.author}|">by Author</h3>
 	</div>
 	
-	<hr /> 
-
+	<hr class="division"/>
+	
 	<h1>Add your review!</h1>
 
 	<form action="#" th:action="@{/submitReview/} + ${book.id}" method="POST" 
@@ -26,12 +52,22 @@
 		<input type="hidden" name="username" value="">
 		<textarea name="review" rows="5" cols="50" required></textarea>
 		<br /> 
-		<input type="submit" value="Add Review!">
+		<input class="btn" type="submit" value="Submit!">
 	</form>
+	
+
 	
 	<br />
 	<br />
-	<hr />
-	<a href="#" th:href="@{/}"><button>Back to index</button></a>
+	<hr class="division" />
+	<div class="centered">
+		<a href="#" th:href="@{/viewBook/} + ${book.id}" class="spaceRight">
+			<button class="btn">cancel</button>
+		</a>     
+		<a  href="#" th:href="@{/}">
+			<button class="btn">Back to index</button>
+		</a>
+		
+	</div>
 </body>
 </html>

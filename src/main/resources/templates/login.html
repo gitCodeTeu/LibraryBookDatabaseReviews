@@ -7,35 +7,49 @@
 <title>Welcome to Our Library!</title>
 </head>
 <body>
-	<h1>Enter your information to login</h1>
+	<header>
+		<a href="#" th:href="@{/}">
+			<img class="logo" src="../images/logo1.png" />
+		</a>
+	</header>
+	<hr class="hrHeader"/> 
 
+	<br />
+	<br />
 	
-	<div th:if="${param.error}" class="redText">
+	<div th:if="${param.error}" class="redText" id="error">
 		<p>Invalid username or password</p>
 	</div>
 
 	
-	<div th:if="${param.logout}" class="redText">
+	<div th:if="${param.logout}" class="redText" id="error">
 		<p>You are now logged out</p>
 	</div>
-	
-	
 	
 	<form action="#" th:action="@{/login}" method="POST">
 		<p>Username: <input type="text" name="username" value="bugs"></p>
 		<p>Password: <input type="text" name="password" value="bunny"></p>
-		<input type="submit" value="Log in">
+		<input class="btn btnLoginWidth" type="submit" value="Log in">
 	</form>
+		
+	<br />
+	<hr class="division" />
 	
 	<br />
+	<div class="centered">
+		<p >Are you a new user? </p>
+		<a href="#" th:href="@{/register}">
+			<button class="btn">Register Here</button>
+		</a>
+	</div>
+
 	<br />
-	<p>
-		Not registered? 
-		<a href="#" th:href="@{/register}"><button>Register Here</button></a>
-	</p>
-	
 	<br />
-	<hr />
-	<a href="#" th:href="@{/}"><button>Back to index</button></a>
+	<hr class="division" />
+	<div class="centered">
+		<a  href="#" th:href="@{/}">
+			<button class="btn">Back to index</button>
+		</a>
+	</div>
 </body>
 </html>
