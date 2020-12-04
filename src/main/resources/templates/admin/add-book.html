@@ -34,13 +34,18 @@
 	<form action="#" th:action="@{/addBook}" method="POST">
 		<p>
 			Title: 
-			<input type="text" name="title" value="Game of Thrones" > <nb\ />
+			<input type="text" name="title" value="Game of Thrones">
 			Author:
 			<input type="text" name="author" value="George R. R. Martin">
 		</p>
+		
 		<br />
-		<br />
+	
 		<input class="btn" type="submit" value="Add Book!">
+		
+		<div th:if="${message}" class="redText centered">
+			<p th:text="${message}"></p>
+		</div>
 	</form>
 
 	<br />

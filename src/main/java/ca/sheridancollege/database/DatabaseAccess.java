@@ -113,6 +113,4 @@ public class DatabaseAccess {
 		namedParam.addValue("role", role);
 	}
 	
-
-	
 }

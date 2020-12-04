@@ -66,8 +66,18 @@ public class HomeController {
 			@RequestParam(required = false) String title,
 			@RequestParam(required = false) String author, 
 			Model model) {
-	
+		
+		List<Book> titleList = db.getBookList();
+		
+		for (Book book : titleList) {
 
+			if(book.getTitle().equalsIgnoreCase(title)==true) {
+				model.addAttribute
+				("message", "This book is already in the database!");
+				return "/admin/add-Book";
+			}
+		}
+		
 		//add book
 		db.addBook(title, author);
 		List<Book> libBookList = db.getBookList();
