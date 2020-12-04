@@ -23,7 +23,9 @@
 
 	<form action="#" th:action="@{/submitReview/} + ${book.id}" method="POST" 
 		name="form" onsubmit="return verify()">
-		<textarea name="review" rows="5" cols="50" required></textarea><br /> 
+		<input type="hidden" name="username" value="">
+		<textarea name="review" rows="5" cols="50" required></textarea>
+		<br /> 
 		<input type="submit" value="Add Review!">
 	</form>
 	

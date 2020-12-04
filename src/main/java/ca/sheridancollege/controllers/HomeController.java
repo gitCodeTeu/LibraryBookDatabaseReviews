@@ -1,5 +1,6 @@
 package ca.sheridancollege.controllers;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,8 @@ public class HomeController {
 	}
 
 	@GetMapping("/addPage")
-	public String goPage() {
+	public String goPage(Model model) {
+		model.addAttribute("book", new Book());
 		return "/admin/add-book";
 	}
 
@@ -64,9 +66,10 @@ public class HomeController {
 			@RequestParam(required = false) String title,
 			@RequestParam(required = false) String author, 
 			Model model) {
+	
 
+		//add book
 		db.addBook(title, author);
-		System.out.println("book added");
 		List<Book> libBookList = db.getBookList();
 		model.addAttribute("libBookList", libBookList);
 		return "index";
@@ -126,9 +129,10 @@ public class HomeController {
 	@PostMapping("/submitReview/{bookId}")
 	public String addReview(
 			@PathVariable Long bookId, 
-			@RequestParam(required = false) String review, Model model) {
+			@RequestParam(required = false) String review, Model model,
+			@RequestParam String username) {
 		db.addReview(bookId, review);
-
+		
 		Book book = db.getBook(bookId);
 		model.addAttribute("book", book);
 

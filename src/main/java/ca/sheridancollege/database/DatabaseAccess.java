@@ -14,6 +14,7 @@ public class DatabaseAccess {
 
 	private NamedParameterJdbcTemplate jdbc;
 	
+	
 	public DatabaseAccess(NamedParameterJdbcTemplate jdbc) {
 		this.jdbc = jdbc;
 	}
