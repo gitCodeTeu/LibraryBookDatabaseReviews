@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception{
 	
-		//authorizez users
+		//authorize users
 		http.authorizeRequests()
 		.antMatchers("/user/**", "/addReview/**").hasAnyRole("USER", "ADMIN")
 		.antMatchers("/admin/**").hasRole("ADMIN")
@@ -71,9 +71,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.dataSource(dataSource)	
 		.withDefaultSchema()
 		.passwordEncoder(passwordEncoder)
-			.withUser("bugs").password(passwordEncoder.encode("bunny")).roles("USER")
+			.withUser("user").password(passwordEncoder.encode("user")).roles("USER")
 			.and()
-			.withUser("a").password(passwordEncoder.encode("a")).roles("ADMIN");
+			.withUser("admin").password(passwordEncoder.encode("admin")).roles("ADMIN");
 	}
 
 }
