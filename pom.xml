@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ca.sheridancollege</groupId>
-	<artifactId>Assignment3</artifactId>
+	<artifactId>LibraryBookDatabaseReviews</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Assignment3</name>
-	<description>Assignment3</description>
+	<name>LibraryBookDatabaseReviews</name>
+	<description>LibraryBookDatabaseReviews</description>
 
 	<properties>
 		<java.version>11</java.version>
