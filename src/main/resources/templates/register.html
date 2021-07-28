@@ -43,8 +43,8 @@
 	
 	<form action="#" th:action="@{/addUser}" method="POST"  name="form" 
 		onsubmit="return verify()">
-		<p>Username: <input type="text" name="username" value="bugs"></p>
-		<p>Password: <input type="text" name="password" value="bunny"></p>
+		<p>Username: <input type="text" name="username" value="bugs" required></p>
+		<p>Password: <input type="text" name="password" value="bunny" required></p>
 		<input class="btn" type="submit" value="Register Now">
 	</form>
 
